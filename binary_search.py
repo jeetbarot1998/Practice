@@ -36,3 +36,25 @@ else:
     print("Element is not present in array")
 
 # The time complexity of binary search O(log n).
+
+
+# =========== Binary search with recursion =========== 
+
+def binaryseaarch_recursive(A, key, l, r):
+    if l > r:
+        return -1
+    else:
+        mid = (l + r) // 2
+        if key == A[mid]:
+            return mid
+        elif key < A[mid]:
+            return binaryseaarch_recursive(A,key,l,mid-1)
+        elif key > A[mid]:
+            return binaryseaarch_recursive(A,key,mid+1,r)
+
+result = binaryseaarch_recursive(arr, x, 0 , len(arr)-1)
+ 
+if result != -1:
+    print("Element is present at index", str(result))
+else:
+    print("Element is not present in array")

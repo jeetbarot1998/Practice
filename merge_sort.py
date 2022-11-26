@@ -39,9 +39,10 @@ def mergeSort(myList):
             right_index += 1
             counter_to_populate_new_array += 1
 
-        print(myList)
+        # print(myList)
+    return myList
 
-mergeSort(element)
+print(mergeSort(element))
 
 
 # Worst complexity: n*log(n)

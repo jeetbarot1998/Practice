@@ -15,7 +15,7 @@ while number_of_primes_to_find < 10:
         is_prime_indicator = False
 
     else:
-        for j in range(3, int(i**0.5)+1):
+        for j in range(3, int(i**0.5)+1,2):
             if i % j == 0:
                 is_prime_indicator = False
                 break
