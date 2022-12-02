@@ -1,0 +1,34 @@
+
+TREE:
+	BINARY TREE:
+		Every node as utmost 2 nodes.
+		Every node has a left and right node
+		Every node's left child is considered 1st child and right child as 2n child.
+	PROPER BINARY TREE:
+		Every Node as either 0 or 2 child.
+	FULL BINARY TREE:
+		Every Internal node as exactly 2 children
+		All leaf nodes are at the same level
+		Number of nodes = 2^h - 1 nodes, where h = height of the tree.
+	COMPLETE BINARY TREE: USED IN HEAP DATA STRUCTURE.
+		Binary tree where nodes at each level are numbered from left to right without gap.
+	
+	WAYS TO TRAVERSE IN TREE:
+		1. Inorder Traverse: Left Node => Root => Right Node. (A+B)
+		2. Preorder Traverse: Root => Left recursively => Right recursively. (+AB)
+		3. Postorder Traverse: Left recursively => Right recursively => Root. (AB+)
+		4. Level order Traverse: Visit nodes level by level from top to bottom => Within level visit node left to right.
+
+BINARY SEARCH TREE:
+	Node in left subtree should be smaller than Parent node and
+	Node in right subtree should be greater than Parent node.
+
+	Example:
+				5
+		3				8
+	1		4				9
+
+		
+		
+		
+	
