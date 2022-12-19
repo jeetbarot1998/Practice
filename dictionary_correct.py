@@ -1,9 +1,10 @@
 import json
 import ast
+import pandas as pd
 
 
 def iterate_till_next_index(string, start_pos, search_for):
-    if string[start_pos] in [search_for, '}']:
+    if string[start_pos] in [search_for, '}', ' ']:
         return start_pos
     else:
         return iterate_till_next_index(string, start_pos + 1, search_for)
@@ -20,19 +21,20 @@ def convert(potential_invld_dct):
         return convert(potential_invld_dct)
 
 
-val = '{"a":"b", "c": wrong, "d":"e", "f": pppp}'
-print(convert(val))
+def convert_txt_to_excel(location):
+    with open(location, 'r', encoding="utf8") as file:
+        lines = file.readlines()
+    list_linse = ast.literal_eval(lines[0])
+    new_list = []
+    for index, each_entry in enumerate(list_linse):
+        try:
+            new_list.append(convert((each_entry)))
+        except Exception as err:
+            print('error while parsing entry at index: ' + str(index) + ' : ', each_entry)
+    df = pd.DataFrame(new_list)
+    df.to_excel("output2.xlsx")
+    print('Success')
+    return 'Success'
 
 
-import pandas as pd
-with open('./myCases.txt', 'r' , encoding="utf8") as file:
-    lines = file.readlines()
-list_linse = ast.literal_eval(lines[0])
-new_list = []
-for index, each_entry in enumerate(list_linse):
-    try:
-        new_list.append(json.loads((each_entry)))
-    except Exception as err:
-        print('error while parsing entry at index: ' + str(index) + ' : ', each_entry)
-df = pd.DataFrame(new_list)
-df.to_excel("output2.xlsx")
+convert_txt_to_excel('./myCases.txt')
