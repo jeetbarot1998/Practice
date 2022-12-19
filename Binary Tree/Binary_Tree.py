@@ -114,32 +114,43 @@ class BinaryTree:
         else:
             return False
 
-    def delete(self,key):
-        # parent
+    
+    def delete(self,e):
         p = self._root
-        # parent of parent
         pp = None
-        while p and p._element != key:
+        while p and p._element != e:
             pp = p
-            if key < p._element:
+            if e < p._element:
                 p = p._left
             else:
                 p = p._right
-        # object p has the refrence to node.
-        # element not found.
         if not p:
             return False
-        #  If the node has right and let child both.
+        # element to be deleted is between the tree,
+        # fetch biggest element from left side of the tree
         if p._left and p._right:
-            # choose the largest element from left subtree
-            subtree = p._left
-            psubtree =  p
-            while subtree._right:
-                psubtree = subtree
-                subtree = subtree._right
-            p._element = subtree._element
+            s = p._left
+            ps = p
+            while s._right:
+                ps = s
+                s = s._right
+            p._element = s._element
+            # element itself = p
             p = s
-            pp = psubtree
+            # parent of the element to be deleted = pp
+            pp = ps
+        c = None
+        if p._left:
+            c = p._left
+        else:
+            c = p._right
+        if p == self._root:
+            self._root = c
+        else:
+            if p == pp._left:
+                pp._left = c
+            else:
+                pp._right = c
 
 
 

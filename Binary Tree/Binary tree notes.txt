@@ -28,7 +28,32 @@ BINARY SEARCH TREE:
 		3				8
 	1		4				9
 
+
+WHY BALANCED SEARCH TREES:
+	1. Reduces the height of the Binary Search Tree after insertion, deleteion etc. So as to have better performance
+	2. Roatation and restructuring. => Reducing the height of th tree
+	3. Modifies the relationship between Parent - Child
+	4. BALANCED SEARCH TREES : AVL, Red Black, Splay Trees
+	5. Balance factor OR Height Balance Property: Height of the left subtree and the right subtree is atmost 1
+	6. AVL Tree: Any Binary Serach tree that satisifies Height Balance Property.
 		
-		
-		
+
+
+AVL: 
+	Any Binary Serach tree that satisifies Height Balance Property.
+
+Disadvantages of AVL:
+	1. They may require additional restructuring opertaions or rotations after insertion or deleteion.
+	2. Less effecient compared to Red-Black.
+	
+Red-Black:
+	It is a Binary Search tree having
+	Every node as colored either Red or Black and satisfies the following properties.
+	1. Root Property: The Root of the binary search tree is always Black.
+	2. Red Property: We cannot have 2 consecutive Red Nodes in any path.
+	3. Depth property: Each path from root node to leaf node will have same number of black nodes.
+	
+	Whenever a new node is added, it is given a red color.
+	So recoloring is required.
+	
 	
