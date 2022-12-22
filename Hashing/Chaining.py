@@ -133,7 +133,7 @@ class linkedList:
         return -1
 
     def insert_sorted(self, key):
-        newest = _Node(e,None)
+        newest = _Node(key,None)
         if self.isempty():
             self._head = newest
         else:
@@ -151,42 +151,37 @@ class linkedList:
                 q._next = newest
         self._size += 1
         
+class HashChain:
+    def __init__(self):
+        self.hashtable_size = 10
+        self.hashtable = [0] * self.hashtable_size
+        for i in range(self.hashtable_size):
+            self.hashtable[i] = linkedList()
 
+    def hashcode(self, key):
+        return key % self.hashtable_size
 
+    def insert(self, element):
+        i = self.hashcode(element)
+        self.hashtable[i].insert_sorted(element)
 
-L = linkedList()
-L.addlast(7)
-L.display()
-print('length is', len(L))
-L.addlast(18)
-L.addlast(3)
-L.display()
-print('length is', len(L))
-value_to_search = 12
-print(f'searched index of {value_to_search} is:', L.search(value_to_search))
-# L.addfirst(1)
-# L.display()
-L.addlast(7)
-L.addlast(4)
-L.addlast(12)
-L.addfirst(9)
-# L.display()
-L.addany(0, 99)
-L.display()
-print('length is', len(L))
-print('Element removefirst is', L.removefirst())
-L.display()
-print('line 154: length is', len(L))
-print('line 155: Element removefirst is', L.removefirst())
-L.display()
-print('length is', len(L))
-print('Element removelast is', L.removelast())
-L.display()
-print('line 160: length is', len(L))
-print('line 161: Element removelast is', L.removelast())
-L.display()
-print('line 163: length is', len(L))
-print('element removed using removeany is:', L.removeany(1))
-L.display()
-print('line 166: length is', len(L))
+    def search(self, key):
+        i = self.hashcode(key)
+        return self.hashtable[i].search(key) != -1
 
+    def display(self):
+        for i in range(self.hashtable_size):
+            print('[',i,']',end=' ')
+            self.hashtable[i].display()
+        print()
+
+H = HashChain()
+H.insert(54)
+H.insert(78)
+H.insert(64)
+H.insert(92)
+H.insert(34)
+H.insert(86)
+H.insert(28)
+H.display()
+print('Result:',H.search(74))
