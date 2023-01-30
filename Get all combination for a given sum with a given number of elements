@@ -1,0 +1,23 @@
+l = [1,2,2,3]
+s = 5
+res = []
+temp_arr = []
+
+
+def numberCombos(res, l, temp_arr, s, a):
+    for i in range(a, len(l)):
+        print("........", i, temp_arr, s)
+        if (s == 0):
+            res.append(list(temp_arr))
+            return res
+
+        if (s - l[i]) >= 0:
+            temp_arr.append(l[i])
+            numberCombos(res, l, temp_arr, s - l[i], i)
+            temp_arr.pop()
+    return res
+
+
+final = numberCombos(res, l, temp_arr, s, 0)
+
+print(final)
