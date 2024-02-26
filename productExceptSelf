@@ -1,0 +1,23 @@
+arr = [2,3,4,5]
+arr = [5,4,3,2]
+def product_except_self(arr):
+    size = len(arr)
+    res = [1]size
+    left = 1
+    right = 1
+
+    for i in range(size):
+        # res = [1, 2, 6, 24]
+        # left = 2, 6, 24, 120
+        res[i] = res[i] left
+        left = left * arr[i]
+
+    for i in range(size-1, -1, -1):
+        # res = [24, 30, 40, 60]
+        # right = 5, 20, 60, 120
+        res[i] = res[i] * right
+        right = right * arr[i]
+
+    return res
+
+print(product_except_self(arr))
