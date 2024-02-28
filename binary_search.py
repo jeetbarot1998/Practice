@@ -40,19 +40,21 @@ else:
 
 # =========== Binary search with recursion =========== 
 
-def binaryseaarch_recursive(A, key, l, r):
-    if l > r:
+def binary_search(L, start, end, item):  
+    if end >= start:  
+        middle = (start + end) // 2  
+        if L[middle] == item:  
+            return middle #middle element is the item to be located  
+        #if middle item is greater than the item to be searched, left side of the list will be searched  
+        elif L[middle] > item:   
+            #starting index will be same but ending index will be the middle of the main list i.e. left half of the list is given in function.  
+            return binary_search(L, start, middle - 1, item)  
+        else:  
+            #if middle item is smaller than the item to be searched, new starting index will be middle of the list i.e. right half of the list.  
+            return binary_search(L, middle + 1, end, item)  
+    else:  
+        #if element is not present in the list  
         return -1
-    else:
-        mid = (l + r) // 2
-        if key == A[mid]:
-            return mid
-        elif key < A[mid]:
-            return binaryseaarch_recursive(A,key,l,mid-1)
-        elif key > A[mid]:
-            return binaryseaarch_recursive(A,key,mid+1,r)
-
-result = binaryseaarch_recursive(arr, x, 0 , len(arr)-1)
  
 if result != -1:
     print("Element is present at index", str(result))
