@@ -55,8 +55,15 @@ def binary_search(L, start, end, item):
     else:  
         #if element is not present in the list  
         return -1
- 
-if result != -1:
-    print("Element is present at index", str(result))
-else:
-    print("Element is not present in array")
+
+my_list = [ 2, 4, 6, 9, 12, 16, 18, 19, 20, 21, 22 ]  
+element_to_search = 6  
+print("The given list is")  
+print(my_list)  
+  
+index_of_element = binary_search(my_list, 0, len(my_list)-1, element_to_search)  
+  
+if index_of_element != -1:  
+    print("Element searched is found at the index ", str(index_of_element), "of given list")  
+else:  
+    print("Element searched is not found in the given list!")  
