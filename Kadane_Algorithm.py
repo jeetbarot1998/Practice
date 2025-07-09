@@ -19,41 +19,28 @@ Input: arr = [1]
 
 Output: 1
 """
+arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 
-inp = [-2,1,-3,4,-1,2,1,-5,4]
+max_sum = arr[0]
+current_sum = 0
 
-start = 0
-end = 1
-max_val = inp[0]
-
-for i in range(len(inp)):
-    for j in range(i + 1, len(inp) + 1):  # j goes 1 past end
-        temp_sum = inp[i:j]
-        if sum(temp_sum) > max_val:
-            max_val = sum(temp_sum)
-            start, end = i, j
-
-
-print(inp[start:end], max_val)
-
-# ========================================================================
-
-# variable sliding window
-
-max_sum = inp[0]
 start = 0
 end = 0
-sum = max_sum
-for i in range(len(inp)):
-    sum = sum + inp[i]
+temp_start = 0
 
-    if sum < 0:
-        start = i+1
-        sum = 0
-    if sum > max_sum:
-        end = i+1
-        max_sum = sum
+for ind, val in enumerate(arr):
+    current_sum += val
 
-print(inp[start: end] ,max_sum)
+    if current_sum > max_sum:
+        max_sum = current_sum
+        start = temp_start
+        end = ind
+
+    if current_sum < 0:
+        current_sum = 0
+        temp_start = ind + 1
+
+print(start, end, arr[start:end+1], max_sum)
+
 
 
